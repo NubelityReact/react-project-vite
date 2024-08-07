@@ -1,0 +1,44 @@
+.container {
+  display: flex;
+  width: 100vw;
+  justify-content: space-between;
+  background-color: var(--black);
+  padding: 32px 24px;
+  align-items: center;
+}
+
+.textMenu {
+  display: none;
+  color: white;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 32px 40px;
+    gap: 42px;
+  }
+
+  .logo {
+    flex-grow: 1;
+    text-align: left;
+  }
+}
+
+@media (min-width: 1440px) {
+  .container {
+    padding: 32px 165px 37px;
+    gap: 42px;
+  }
+
+  .menu {
+    display: none;
+  }
+
+  .textMenu {
+    display: initial;
+  }
+
+  .logo {
+    flex-grow: 0;
+  }
+}

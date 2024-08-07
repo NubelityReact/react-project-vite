@@ -1,0 +1,22 @@
+.container {
+  position: relative;
+  width: min-content;
+}
+
+.number {
+  position: absolute;
+  background-color: brown;
+  border-radius: 7px;
+  height: 14px;
+  width: 14px;
+  color: var(--white);
+  display: grid;
+  place-content: center;
+  right: -5px;
+  top: -5px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.icon {
+}

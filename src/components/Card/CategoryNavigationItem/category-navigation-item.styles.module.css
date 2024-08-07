@@ -1,0 +1,19 @@
+.container {
+  position: relative;
+  border: 1px solid transparent;
+}
+
+.content {
+  background-color: var(--grey-light);
+  border-radius: 8px;
+  padding: 116px 116px 30px;
+}
+
+.imgContainer {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* .img {} */
