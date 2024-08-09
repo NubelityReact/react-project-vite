@@ -36,7 +36,9 @@ const CardCategoryNavigationItem = (props) => {
         style={{ marginBlockStart: pictureHeight / 2 }}
       >
         <Typography variant={"h6"}>{title}</Typography>
-        <Button variant={"link"}>shop</Button>
+        <Button style={{ margin: "0 auto" }} variant={"link"}>
+          shop
+        </Button>
       </div>
     </article>
   );
@@ -49,6 +51,6 @@ CardCategoryNavigationItem.propTypes = {
   "img.height": PropTypes.number,
   "img.src": PropTypes.string,
   "img.width": PropTypes.number,
-  "img.alt": PropTypes.alt,
+  "img.alt": PropTypes.string,
   title: PropTypes.string,
 };

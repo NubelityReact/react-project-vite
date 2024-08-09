@@ -1,0 +1,18 @@
+.container {
+  background-color: #00000066;
+  position: absolute;
+  width: 100vw;
+  min-height: 100vh;
+  top: 92px;
+  left: 0px;
+  transition: left 0.5s ease-in-out;
+}
+
+.hideContainer {
+  left: -100vw;
+}
+
+.content {
+  background-color: var(--white);
+  padding: 32px 24px 35px;
+}

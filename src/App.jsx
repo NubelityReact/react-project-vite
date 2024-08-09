@@ -7,7 +7,7 @@ function App() {
       style={{
         display: "grid",
         minHeight: "100vh",
-        placeContent: "center",
+        placeContent: "flex-start",
         background: "#452",
         overflow: "auto",
       }}

@@ -9,6 +9,7 @@ const Button = (props) => {
     href,
     variant = "contained",
     icon = "/icon-chevron.svg",
+    ...rest
   } = props;
 
   const changeRoute = () => {};
@@ -17,6 +18,7 @@ const Button = (props) => {
     <button
       className={clsx(styles.container, styles[variant])}
       onClick={() => changeRoute(href)}
+      {...rest}
     >
       <Typography as="span" variant={"subtitle"}>
         {children}

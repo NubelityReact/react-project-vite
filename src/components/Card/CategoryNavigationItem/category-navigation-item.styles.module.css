@@ -1,12 +1,14 @@
 .container {
   position: relative;
   border: 1px solid transparent;
+  min-width: 223px;
 }
 
 .content {
   background-color: var(--grey-light);
   border-radius: 8px;
-  padding: 116px 116px 30px;
+  padding: 116px 0px 30px;
+  text-align: center;
 }
 
 .imgContainer {
