@@ -1,0 +1,97 @@
+.container {
+  background-color: var(--secondary);
+  color: white;
+  display: grid;
+  grid-template-areas: "logo" "textnavigation" "p1" "p2" "icons";
+  justify-content: center;
+  justify-items: center;
+  text-align: center;
+  gap: 48px;
+  padding: 52px 24px 38px;
+  position: relative;
+}
+
+.container::before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 50%;
+  width: 101px;
+  height: 4px;
+  background-color: var(--main);
+  transform: translateX(-50%);
+}
+
+.logo {
+  grid-area: logo;
+}
+
+.navigationText {
+  grid-area: textnavigation;
+}
+
+.navigationText ul {
+  padding: 0;
+}
+
+.p1 {
+  grid-area: p1;
+}
+
+.p2 {
+  grid-area: p2;
+}
+
+.text {
+  opacity: 0.5;
+}
+
+.icons {
+  display: flex;
+  gap: 16px;
+  grid-area: icons;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    padding: 60px 40px 46px;
+    gap: 32px;
+    grid-template-areas:
+      "logo logo"
+      "textnavigation textnavigation"
+      "p1 p1"
+      "p2 icons";
+    text-align: left;
+    justify-items: flex-start;
+  }
+
+  .container::before {
+    left: 39px;
+    transform: initial;
+  }
+  .p2 {
+    margin-block-start: 48px;
+  }
+  .icons {
+    margin-block-start: 48px;
+    justify-self: flex-end;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .container {
+    gap: 36px;
+    padding: 75px 165px 48px;
+    grid-template-areas: "logo textnavigation" "p1 icons" "p2 icons";
+  }
+  .container::after {
+    left: 165px;
+  }
+  .p2 {
+    margin-block-start: 20px;
+  }
+
+  .icon:hover {
+    cursor: pointer;
+  }
+}

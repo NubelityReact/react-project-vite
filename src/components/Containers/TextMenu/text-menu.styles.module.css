@@ -6,6 +6,11 @@
   margin: 0;
 }
 
+.listItem:hover {
+  color: var(--main);
+  cursor: pointer;
+}
+
 @media (min-width: 768px) {
   .list {
     flex-direction: row;

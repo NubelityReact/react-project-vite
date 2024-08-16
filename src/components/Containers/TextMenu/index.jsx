@@ -8,7 +8,7 @@ const TextMenu = (props) => {
       <ul className={styles.list}>
         {data.map((item) => {
           return (
-            <li key={item.label}>
+            <li key={item.label} className={styles.listItem}>
               <Typography variant="subtitle" style={{ letterSpacing: "2px" }}>
                 {item.label}
               </Typography>

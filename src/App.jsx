@@ -1,4 +1,5 @@
 import "./App.css";
+import Footer from "./components/Layout/Footer";
 import Header from "./components/Layout/header";
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
       }}
     >
       <Header />
+      <Footer />
     </div>
   );
 }
