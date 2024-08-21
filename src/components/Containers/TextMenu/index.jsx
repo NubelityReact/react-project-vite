@@ -11,7 +11,7 @@ const TextMenu = (props) => {
           return (
             <li key={item.label} className={styles.listItem}>
               <Link to={item.href}>
-                <Typography variant="subtitle" style={{ letterSpacing: "2px" }}>
+                <Typography variant="subtitle" className={styles.itemText}>
                   {item.label}
                 </Typography>
               </Link>

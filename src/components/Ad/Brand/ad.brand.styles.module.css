@@ -1,0 +1,49 @@
+.container {
+  display: grid;
+  text-align: center;
+  gap: 32px;
+}
+
+.imgContainer {
+  width: 100%;
+  min-height: 300px;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.img {
+}
+
+.title {
+  margin-block-start: 8px;
+  letter-spacing: 0.1rem;
+}
+
+.description {
+  opacity: 0.5;
+}
+
+@media screen and (min-width: 1440px) {
+  .container {
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 20px;
+    max-height: 588px;
+  }
+
+  .imgContainer {
+    grid-column: 2;
+    grid-row: 1 / 6;
+    justify-self: stretch;
+  }
+
+  .title {
+    grid-column: 1;
+    grid-row: 2 / 3;
+  }
+
+  .description {
+    grid-column: 1;
+    grid-row: 3 /6;
+  }
+}

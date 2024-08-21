@@ -1,0 +1,14 @@
+.content {
+  padding-inline: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 120px;
+}
+
+.title {
+  background-color: var(--black);
+  color: var(--white);
+  text-align: center;
+  padding-block: 32px;
+  margin: 0;
+}

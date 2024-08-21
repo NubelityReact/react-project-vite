@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import Button from "../../Button";
+import Button from "../../Button/Base";
 import Typography from "../../Typography";
 import styles from "./category-navigation-item.styles.module.css";
 import PropTypes from "prop-types";

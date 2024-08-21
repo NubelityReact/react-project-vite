@@ -1,0 +1,63 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 88px;
+  justify-items: center;
+}
+
+.card {
+  display: grid;
+  gap: 24px;
+}
+
+.imgContainer {
+  border-radius: 16px;
+  overflow: hidden;
+  margin-block-end: 8px;
+  width: 100%;
+}
+
+.img {
+  width: 100%;
+}
+
+.opacity {
+  opacity: 0.5;
+}
+
+.buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.inTheBoxList {
+  display: grid;
+  gap: 8px;
+}
+
+.inTheBoxList li {
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  gap: 20px;
+}
+
+.gallery {
+  display: grid;
+  gap: 20px;
+}
+
+.gallery picture {
+  border-radius: 8px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.gallery img {
+  width: 100%;
+}

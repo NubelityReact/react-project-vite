@@ -1,7 +1,7 @@
 import PropType from "prop-types";
 import styles from "./button.module.css";
 import clsx from "clsx";
-import Typography from "../Typography";
+import Typography from "../../Typography";
 
 const Button = (props) => {
   const {
@@ -30,7 +30,7 @@ const Button = (props) => {
 
 Button.propTypes = {
   variant: PropType.string, // contained, outlined, link
-  children: PropType.string.isRequired,
+  children: PropType.node.isRequired,
   href: PropType.string,
   icon: PropType.string,
 };
