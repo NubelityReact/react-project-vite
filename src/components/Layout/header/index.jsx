@@ -7,7 +7,7 @@ import { useState } from "react";
 import Modal from "../../Modal/Base";
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(true);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);

@@ -1,6 +1,7 @@
 import { data } from "./data";
 import styles from "./text-menu.styles.module.css";
 import Typography from "../../Typography";
+import { Link } from "react-router-dom";
 
 const TextMenu = (props) => {
   return (
@@ -9,9 +10,11 @@ const TextMenu = (props) => {
         {data.map((item) => {
           return (
             <li key={item.label} className={styles.listItem}>
-              <Typography variant="subtitle" style={{ letterSpacing: "2px" }}>
-                {item.label}
-              </Typography>
+              <Link to={item.href}>
+                <Typography variant="subtitle" style={{ letterSpacing: "2px" }}>
+                  {item.label}
+                </Typography>
+              </Link>
             </li>
           );
         })}
