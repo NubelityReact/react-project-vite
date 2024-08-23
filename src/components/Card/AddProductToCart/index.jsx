@@ -4,12 +4,19 @@ import Typography from "../../Typography";
 // import Counter from "../../Counter";
 import Button from "../../Button/Base";
 import ProductRecommendation from "../ProductRecomendation";
+import Counter from "../../Counter";
+import { useCart } from "../../../contexts/cart.context";
+import { useRef } from "react";
 
 const AddProductToCart = (props) => {
-  // const handleClick = () => {
-  //   const value = valueRef.current ?? 1;
-  //   dispatch(addProduct({ amount: value, product: props }));
-  // };
+  const { addProduct } = useCart();
+  const counterRef = useRef(null);
+
+  const handleAddProduct = () => {
+    const value = counterRef.current.counter;
+    const item = { quantity: value, product: props };
+    addProduct(item);
+  };
 
   return (
     <section className={styles.container}>
@@ -37,9 +44,9 @@ const AddProductToCart = (props) => {
         <Typography>${props.price}</Typography>
 
         <div className={styles.buttons}>
-          {/* <Counter ref={valueRef} /> */}
+          <Counter ref={counterRef} />
 
-          <Button variant="primary">
+          <Button variant="contained" onClick={handleAddProduct}>
             <Typography variant="subtitle">add to cart</Typography>
           </Button>
         </div>

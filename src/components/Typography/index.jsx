@@ -20,7 +20,7 @@ export default Typography;
 
 Typography.propTypes = {
   as: PropType.string, // p, span, div, h1, h2, h3, h4, h5, h6
-  children: PropType.string.isRequired,
+  children: PropType.node.isRequired,
   variant: PropType.string, // h1, h2, h3, h4, h5, h6, overline, subtitle, body
   className: PropType.string,
 };

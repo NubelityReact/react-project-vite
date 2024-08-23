@@ -1,0 +1,15 @@
+.container {
+  width: 120px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  background-color: var(--grey-light);
+}
+
+.button {
+  flex-grow: 1;
+  height: 100%;
+  border: 1px solid transparent;
+  background: none;
+  opacity: 0.25;
+}
