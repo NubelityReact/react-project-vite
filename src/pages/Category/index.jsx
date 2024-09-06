@@ -1,19 +1,37 @@
 import { useParams } from "react-router-dom";
 import CategoryNavigation from "../../components/Containers/CategoryNavigation";
-import products from "../../data/products";
 import CardProduct from "../../components/Card/Product";
 import styles from "./category.page.styles.module.css";
 import Typography from "../../components/Typography";
+import { useEffect, useState } from "react";
+import { endpoints } from "../../mocks/handlers";
 
 const CategoryPage = () => {
   // obtener los parámetros de la url
   const params = useParams();
   const name = params.name;
+  const [categoryProducts, setCategoryProducts] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  // pide los datos al backend a partir de tus datos en la url
-  const categoryProducts = products.filter(
-    (product) => product.category === name,
-  );
+  useEffect(() => {
+    setLoading(true);
+    fetch(endpoints.products.getByCategory(name))
+      .then((response) => response.json())
+      .then((data) => {
+        setCategoryProducts(data.products);
+      })
+      .catch((error) => setError(error.message))
+      .finally(() => setLoading(false));
+  }, [name]);
+
+  if (loading) {
+    return <h1>loading....</h1>;
+  }
+
+  if (error) {
+    return <h1>An error occured {error}</h1>;
+  }
 
   //renderiza los datos
   return (

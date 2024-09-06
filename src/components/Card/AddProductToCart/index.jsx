@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import styles from "./add.product.to.cart.styles.module.css";
 import Typography from "../../Typography";
-// import Counter from "../../Counter";
 import Button from "../../Button/Base";
 import ProductRecommendation from "../ProductRecomendation";
 import Counter from "../../Counter";

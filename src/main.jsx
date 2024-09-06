@@ -35,8 +35,20 @@ const router = createBrowserRouter(
   // ]
 );
 
-ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>,
-);
+async function enableMocking() {
+  // eslint-disable-next-line no-undef
+  if (process.env.NODE_ENV !== "development") {
+    return;
+  }
+
+  const { worker } = await import("./mocks/browser.js");
+  return worker.start();
+}
+
+enableMocking().then(() => {
+  return ReactDOM.createRoot(document.getElementById("root")).render(
+    <React.StrictMode>
+      <RouterProvider router={router} />
+    </React.StrictMode>,
+  );
+});

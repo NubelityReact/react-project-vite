@@ -1,3 +1,5 @@
+import { globalLinks } from "../../../constants/links";
+
 export const links = [
   {
     img: {
@@ -7,6 +9,7 @@ export const links = [
       height: 160,
     },
     title: "headphones",
+    href: globalLinks.category.headphones,
   },
   {
     img: {
@@ -16,6 +19,7 @@ export const links = [
       height: 146,
     },
     title: "speakers",
+    href: globalLinks.category.speakers,
   },
   {
     img: {
@@ -25,5 +29,6 @@ export const links = [
       height: 126,
     },
     title: "earphones",
+    href: globalLinks.category.earphones,
   },
 ];

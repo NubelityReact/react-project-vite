@@ -1,18 +1,20 @@
+import { globalLinks } from "../../../constants/links";
+
 export const data = [
   {
     label: "home",
-    href: "/",
+    href: globalLinks.home,
   },
   {
     label: "headphones",
-    href: "/category/headphones",
+    href: globalLinks.category.headphones,
   },
   {
     label: "speakers",
-    href: "/category/speakers",
+    href: globalLinks.category.speakers,
   },
   {
     label: "earphones",
-    href: "/category/earphones",
+    href: globalLinks.category.earphones,
   },
 ];

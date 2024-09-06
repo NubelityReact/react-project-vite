@@ -24,14 +24,49 @@ export function CartContext({ children }) {
   });
 
   const addProduct = ({ product, quantity }) => {
-    const value = (p) => ({
-      ...p,
-      productWithQuantities: [
-        ...p.productWithQuantities,
-        { product, quantity },
-      ],
+    let newArrayPayload = state.productWithQuantities;
+    let newUniqueItems = state.totalUniqueItems;
+    let newItems = state.totalItemsInCart;
+    // buscar si el producto ya está en el carrito de compras
+    const productWithQuantity = state.productWithQuantities.find(
+      (item) => item.product.id == product.id,
+    );
+    // si existe, solo modificar el parámetro quantity
+    if (productWithQuantity) {
+      newArrayPayload = [
+        ...state.productWithQuantities.filter(
+          (item) => item.product.id != product.id,
+        ),
+        {
+          product: productWithQuantity.product,
+          quantity: productWithQuantity.quantity + quantity,
+        },
+      ];
+      newItems += quantity;
+    }
+    // si no existe agregarlo al array del carrito
+    else {
+      newArrayPayload = [...state.productWithQuantities, { product, quantity }];
+      // actualizar valor de items totales
+      newItems += quantity;
+      // actualizar valor de items únicos
+      newUniqueItems += 1;
+    }
+
+    const newVat =
+      newArrayPayload.reduce(
+        (acc, item) => acc + item.product.price * item.quantity,
+        0,
+      ) * 0.16;
+    // agregar lógica para calcular el costo de envío
+
+    setState({
+      productWithQuantities: newArrayPayload,
+      shipping: state.shipping,
+      vat: newVat,
+      totalItemsInCart: newItems,
+      totalUniqueItems: newUniqueItems,
     });
-    setState(value);
   };
 
   const removeProduct = (id) => {

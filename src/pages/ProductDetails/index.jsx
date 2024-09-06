@@ -4,18 +4,38 @@ import AddProductToCart from "../../components/Card/AddProductToCart";
 import CategoryNavigation from "../../components/Containers/CategoryNavigation";
 import AdBrand from "../../components/Ad/Brand";
 import GoBack from "../../components/Button/GoBack";
-import products from "../../data/products";
+import { useEffect, useState } from "react";
+import { endpoints } from "../../mocks/handlers";
 
 const ProductDetails = () => {
   const params = useParams();
   const id = params.id ?? "";
 
-  // traerlo del estado
-  const product = products.find((p) => p.id == id);
+  const [product, setProduct] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  // si no se encuentra se hace una peticion http con un useEffect para llamar al endpoint del producto
+  useEffect(() => {
+    setLoading(true);
+    fetch(endpoints.products.getById(id))
+      .then((response) => response.json())
+      .then((data) => {
+        setProduct(data);
+      })
+      .catch((err) => setError(err.message))
+      .finally(() => setLoading(false));
+  }, [id]);
+
+  if (loading) {
+    return <h1>Cargando...</h1>;
+  }
+
+  if (error) {
+    return <h1>Error: {error}</h1>;
+  }
+
   if (!product) {
-    return <div>Producto no encontrado</div>;
+    return <h1>Producto no encontrado</h1>;
   }
 
   return (
