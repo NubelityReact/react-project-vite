@@ -3,6 +3,7 @@ import "./App.css";
 import Footer from "./components/Layout/Footer";
 import Header from "./components/Layout/header";
 import { CartContext } from "./contexts/cart.context";
+import FormCheckout from "./components/Containers/Form/CheckoutForm";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <div>
         <Header />
         <Outlet />
+        <FormCheckout />
         <Footer />
       </div>
     </CartContext>

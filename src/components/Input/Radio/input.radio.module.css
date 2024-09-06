@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+}
+
+.inputContainer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 16px;
+  border: 1px solid var(--input-gray);
+  border-radius: 8px;
+}
+
+.input {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  border: 1px solid var(--input-gray);
+  position: relative;
+}
+
+.input:checked::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: var(--main);
+}
+
+.inputContainer:has(.input:checked) {
+  border-color: var(--main);
+}
