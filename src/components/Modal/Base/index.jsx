@@ -1,42 +1,56 @@
+import { useEffect } from "react";
 import { createPortal } from "react-dom";
-import styles from "./modal.styles.module.css";
+import styles from "./modal.base.styles.module.css";
 import clsx from "clsx";
-import PropTypes from "prop-types";
 
 const Modal = (props) => {
-  const { children, htmlId = "menu", ...rest } = props;
+  const { isOpen, nodeId = "menu", ...rest } = props;
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflowY = "hidden";
+    }
+
+    return () => {
+      document.body.style.overflowY = "initial";
+    };
+  }, [isOpen]);
+
+  if (!isOpen) {
+    return null;
+  }
 
   return createPortal(
-    <ModalChildren {...rest}>{children}</ModalChildren>,
-    document.getElementById(htmlId),
+    <ModalChildren {...rest} />,
+    document.getElementById(nodeId),
   );
 };
 
-export default Modal;
-
-const ModalChildren = (props) => {
-  const { children, classContainer, classContent, isOpen, onClose, ...rest } =
-    props;
+const ModalChildren = ({
+  children,
+  onClose,
+  containerStyles,
+  contentStyles,
+}) => {
+  const handleBackdropClick = (event) => {
+    if (event.target === event.currentTarget) {
+      onClose();
+    }
+  };
 
   return (
     <div
-      onClick={onClose}
-      className={clsx(
-        styles.container,
-        classContainer,
-        !isOpen && styles.hideContainer,
-      )}
-      {...rest}
+      className={clsx(styles.container, containerStyles)}
+      onClick={handleBackdropClick}
     >
-      <div className={clsx(styles.content, classContent)}>{children}</div>
+      <div
+        className={clsx(styles.content, contentStyles)}
+        onClick={(e) => e.stopPropagation()}
+      >
+        {children}
+      </div>
     </div>
   );
 };
 
-ModalChildren.propTypes = {
-  children: PropTypes.element,
-  classContainer: PropTypes.string,
-  classContent: PropTypes.string,
-  isOpen: PropTypes.bool,
-  onClose: PropTypes.func,
-};
+export default Modal;

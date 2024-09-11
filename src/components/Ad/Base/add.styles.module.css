@@ -7,7 +7,7 @@
 }
 
 .containerA {
-  background-color: var(--main-orange);
+  background-color: var(--main);
   background-image: url("../../../../public/components/ads/circles_mobile.png");
   background-repeat: no-repeat;
   background-size: 100%;

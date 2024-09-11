@@ -1,0 +1,11 @@
+.modalContainer {
+  min-height: 100vh;
+  top: 90px;
+  align-content: flex-start;
+}
+
+.modalContent {
+  width: 100vw;
+  padding: 32px 24px;
+  background-color: var(--white);
+}

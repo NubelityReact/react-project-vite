@@ -1,32 +1,10 @@
-import React from "react";
-import { Image, withHTMLAttrs } from "../../../customTypes/utils";
 import Typography from "../../Typography";
 import { Link } from "react-router-dom";
 import Button from "../../Button/Base";
 import styles from "./add.styles.module.css";
 import clsx from "clsx";
 
-type IAdProps =
-  | {
-      title: string;
-      heading?: "h2" | "h3" | "h4";
-      description: string;
-      href: string;
-      textButton?: string;
-      img: Image;
-      type: "A";
-    }
-  | {
-      title: string;
-      heading?: "h2" | "h3" | "h4";
-      description?: never;
-      href: string;
-      textButton?: string;
-      img: Image;
-      type: "B" | "C";
-    };
-
-const Ad: React.FC<withHTMLAttrs<IAdProps>> = (props) => {
+const Ad = (props) => {
   const {
     type,
     img,

@@ -1,0 +1,41 @@
+.container {
+  background-color: white;
+  border-radius: 8px;
+  display: grid;
+  gap: 24px;
+  padding: 28px 30px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.products {
+  display: grid;
+  gap: 24px;
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+}
+
+.total > *:first-child {
+  font-weight: 500;
+  opacity: 0.5;
+}
+
+.total > *:nth-child(2) {
+  font-weight: 700;
+}
+
+.link {
+  display: block;
+  width: 100%;
+}
+
+.link * {
+  width: 100%;
+  text-align: center;
+}

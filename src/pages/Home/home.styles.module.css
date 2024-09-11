@@ -1,0 +1,11 @@
+.main {
+  padding-inline: 24px;
+  padding-block: 40px 120px;
+  display: grid;
+  gap: 120px;
+}
+
+.ads {
+  display: grid;
+  gap: 24px;
+}

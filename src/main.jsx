@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import CategoryPage from "./pages/Category/index.jsx";
 import NotFoundPage from "./pages/NotFound/index.jsx";
 import ProductDetailsPage from "./pages/ProductDetails/index.jsx";
+import Home from "./pages/Home/index.jsx";
 // import GeneralPages from "./pages/GeneralPages/index.jsx";
 
 const router = createBrowserRouter(
@@ -15,6 +16,10 @@ const router = createBrowserRouter(
       element: <App />,
       errorElement: <NotFoundPage />,
       children: [
+        {
+          path: "/",
+          element: <Home />,
+        },
         {
           path: "category/:name",
           element: <CategoryPage />,

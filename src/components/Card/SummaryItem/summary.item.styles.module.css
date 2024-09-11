@@ -1,0 +1,38 @@
+.container {
+  display: grid;
+  grid-auto-flow: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 16px;
+  grid-template-columns: 64px 1fr 1fr;
+}
+
+.imgContainer {
+  border-radius: 8px;
+  overflow: hidden;
+  width: 64px;
+  height: 64px;
+}
+
+.img {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.data {
+  display: flex;
+  flex-direction: column;
+}
+
+.price {
+  font-size: 1.4rem;
+  color: var(--black);
+  opacity: 0.5;
+  font-weight: 700;
+}
+
+.children {
+  justify-self: flex-end;
+  text-align: end;
+}
