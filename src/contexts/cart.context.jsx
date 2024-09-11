@@ -5,11 +5,6 @@ import { createContext, useContext, useState } from "react";
 // consumer
 const Cart = createContext();
 
-// const initialObj = {
-//     quantity: 0,
-//     product: {}
-// }
-
 export const useCart = () => {
   return useContext(Cart);
 };
@@ -21,12 +16,15 @@ export function CartContext({ children }) {
     totalUniqueItems: 0,
     vat: 0,
     shipping: 0,
+    total: 0,
+    subtotal: 0,
   });
 
   const addProduct = ({ product, quantity }) => {
     let newArrayPayload = state.productWithQuantities;
     let newUniqueItems = state.totalUniqueItems;
     let newItems = state.totalItemsInCart;
+    let unitPrice = product.price;
     // buscar si el producto ya está en el carrito de compras
     const productWithQuantity = state.productWithQuantities.find(
       (item) => item.product.id == product.id,
@@ -60,12 +58,16 @@ export function CartContext({ children }) {
       ) * 0.16;
     // agregar lógica para calcular el costo de envío
 
+    const subtotal = state.subtotal + unitPrice * quantity;
+    const total = subtotal + newVat + state.shipping;
     setState({
       productWithQuantities: newArrayPayload,
       shipping: state.shipping,
       vat: newVat,
       totalItemsInCart: newItems,
       totalUniqueItems: newUniqueItems,
+      subtotal,
+      total,
     });
   };
 

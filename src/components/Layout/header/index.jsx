@@ -15,7 +15,6 @@ const Header = () => {
 
   const [isCartOpen, setIsCartOpen] = useState(false);
 
-  // const cartState = useSelector((state: RootState) => state.cart);
   const cartState = useCart();
 
   const { match } = useViewportMatchSize("desktop");
@@ -64,10 +63,9 @@ const Header = () => {
 
           <Icon
             name="cart.svg"
-            icon={{ src: "/icons/cart.svg", alt: "cart" }}
             onClick={openCart}
-            n={cartState.totalItems}
             className={styles.cart}
+            number={cartState.state.totalItemsInCart}
           />
         </header>
       </div>

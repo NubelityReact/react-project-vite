@@ -7,6 +7,7 @@ import CategoryPage from "./pages/Category/index.jsx";
 import NotFoundPage from "./pages/NotFound/index.jsx";
 import ProductDetailsPage from "./pages/ProductDetails/index.jsx";
 import Home from "./pages/Home/index.jsx";
+import CheckoutPage from "./pages/Checkout/index.jsx";
 // import GeneralPages from "./pages/GeneralPages/index.jsx";
 
 const router = createBrowserRouter(
@@ -19,6 +20,10 @@ const router = createBrowserRouter(
         {
           path: "/",
           element: <Home />,
+        },
+        {
+          path: "/checkout",
+          element: <CheckoutPage />,
         },
         {
           path: "category/:name",

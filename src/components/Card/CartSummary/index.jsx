@@ -7,7 +7,6 @@ import Button from "../../Button/Base";
 import { useCart } from "../../../contexts/cart.context";
 
 const CartSummary = (props) => {
-  // const cartState = useSelector((state: RootState) => state.cart);
   const cartState = useCart();
 
   const handleDeleteAll = () => {};
@@ -19,12 +18,12 @@ const CartSummary = (props) => {
   return (
     <div className={styles.container}>
       <header className={styles.header}>
-        <Typography>CART {cartState.totalItems}</Typography>
+        <Typography>CART {cartState.state.totalItemsInCart}</Typography>
         <Typography onClick={handleDeleteAll}>Remove all</Typography>
       </header>
 
       <div className={styles.products}>
-        {(cartState?.products ?? []).map((item) => {
+        {(cartState.state?.productWithQuantities ?? []).map((item) => {
           return (
             <SummaryItem key={item.product.id} {...item.product}>
               <Counter

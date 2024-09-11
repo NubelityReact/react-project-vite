@@ -1,0 +1,35 @@
+.container {
+  display: grid;
+  gap: 32px;
+}
+
+.products {
+  display: grid;
+  gap: 24px;
+}
+
+.list {
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+
+.listItem {
+  display: flex;
+  justify-content: space-between;
+}
+
+.listItem > *:first-child {
+  text-transform: uppercase;
+  opacity: 0.5;
+  font-weight: 500;
+}
+.listItem > *:nth-child(2) {
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.button * {
+  width: 100%;
+  text-align: center;
+}

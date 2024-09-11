@@ -1,6 +1,9 @@
 import { useForm } from "react-hook-form";
 import InputRadio from "../../../Input/Radio";
 import InputText from "../../../Input/Text";
+import { forwardRef, useImperativeHandle, useRef } from "react";
+import { useState } from "react";
+import ModalOrderConfirmation from "../../../Modal/OrderConfirmation";
 
 const paymentOptions = [
   {
@@ -12,8 +15,9 @@ const paymentOptions = [
     label: "Cash on Delivery",
   },
 ];
+// forwardRef(componente, refencia)
 
-const FormCheckout = () => {
+const FormCheckout = forwardRef(function FormCheckout(_, ref) {
   const {
     formState: { errors },
     register,
@@ -33,19 +37,25 @@ const FormCheckout = () => {
       eMoneyPIN: "",
     },
   });
+  const formRef = useRef(null);
+  const [isOpen, setIsOpen] = useState(false);
 
   const paymentMethod = watch("paymentOptions");
 
   const onSubmit = (data) => {
-    // datos ya lipios y procesados
     // eslint-disable-next-line no-console
     console.log("datos", data);
-    // una vez todo es correcto, continua con tu proceso
+    setIsOpen(true);
+    window.scrollTo(0, 0);
   };
+
+  useImperativeHandle(ref, () => ({
+    validate: handleSubmit(onSubmit),
+  }));
 
   return (
     <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form ref={formRef} onSubmit={handleSubmit(onSubmit)}>
         <p>Billing details</p>
         <InputText
           id="name"
@@ -138,11 +148,15 @@ const FormCheckout = () => {
             />
           </>
         )}
-
-        <button>Enviar</button>
       </form>
+
+      <ModalOrderConfirmation
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        nodeId="checkout"
+      />
     </div>
   );
-};
+});
 
 export default FormCheckout;

@@ -1,4 +1,4 @@
-export function formatMoney(amount, locale, currency) {
+export function formatMoney(amount, locale = "es-MX", currency = "MXN") {
   const formatter = new Intl.NumberFormat(locale, {
     style: "currency",
     currency: currency,

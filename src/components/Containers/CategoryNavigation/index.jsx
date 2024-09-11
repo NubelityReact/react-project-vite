@@ -9,7 +9,7 @@ export default function CategoryNavigation() {
       {links.map((data) => {
         return (
           <Link key={data.title} to={data.href}>
-            <CardCategoryNavigationItem {...data} />;
+            <CardCategoryNavigationItem {...data} />
           </Link>
         );
       })}

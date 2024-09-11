@@ -1,7 +1,6 @@
 import Modal from "../Base";
 import CategoryNavigation from "../../Containers/CategoryNavigation";
 import styles from "./modal.menu.styles.module.css";
-import { links } from "../../Containers/CategoryNavigation/links-data";
 
 const ModalMenu = (props) => {
   return (
@@ -10,7 +9,7 @@ const ModalMenu = (props) => {
       containerStyles={styles.modalContainer}
       contentStyles={styles.modalContent}
     >
-      <CategoryNavigation cards={links} />
+      <CategoryNavigation />
     </Modal>
   );
 };
