@@ -5,23 +5,23 @@ import styles from "./counter.styles.module.css";
 import clsx from "clsx";
 
 const Counter = forwardRef(function Counter(props, ref) {
-  const { onIncrease, onDecrease, className, ...rest } = props;
+  const { counter = 1, onIncrease, onDecrease, className, ...rest } = props;
 
-  const [counter, setCounter] = useState(1);
+  const [innerCounter, setInnerCounter] = useState(counter);
 
   useImperativeHandle(ref, () => ({
-    counter: counter,
+    counter: innerCounter,
   }));
 
   const handleSubstract = (decrement = 1) => {
-    if (counter > 1) {
-      setCounter(counter - decrement);
+    if (innerCounter > 1) {
+      setInnerCounter(innerCounter - decrement);
     }
     onDecrease && onDecrease();
   };
 
   const handleAdd = (increment = 1) => {
-    setCounter(counter + increment);
+    setInnerCounter(innerCounter + increment);
     onIncrease && onIncrease();
   };
 
@@ -30,7 +30,7 @@ const Counter = forwardRef(function Counter(props, ref) {
       <button className={styles.button} onClick={() => handleSubstract()}>
         -
       </button>
-      <Typography className={styles.text}>{counter}</Typography>
+      <Typography className={styles.text}>{innerCounter}</Typography>
       <button className={styles.button} onClick={() => handleAdd()}>
         +
       </button>

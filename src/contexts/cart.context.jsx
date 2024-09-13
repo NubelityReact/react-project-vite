@@ -5,20 +5,22 @@ import { createContext, useContext, useState } from "react";
 // consumer
 const Cart = createContext();
 
+const initialState = {
+  productWithQuantities: [],
+  totalItemsInCart: 0,
+  totalUniqueItems: 0,
+  vat: 0,
+  shipping: 0,
+  total: 0,
+  subtotal: 0,
+};
+
 export const useCart = () => {
   return useContext(Cart);
 };
 
 export function CartContext({ children }) {
-  const [state, setState] = useState({
-    productWithQuantities: [],
-    totalItemsInCart: 0,
-    totalUniqueItems: 0,
-    vat: 0,
-    shipping: 0,
-    total: 0,
-    subtotal: 0,
-  });
+  const [state, setState] = useState(initialState);
 
   const addProduct = ({ product, quantity }) => {
     let newArrayPayload = state.productWithQuantities;
@@ -31,15 +33,14 @@ export function CartContext({ children }) {
     );
     // si existe, solo modificar el parámetro quantity
     if (productWithQuantity) {
-      newArrayPayload = [
-        ...state.productWithQuantities.filter(
-          (item) => item.product.id != product.id,
-        ),
-        {
-          product: productWithQuantity.product,
-          quantity: productWithQuantity.quantity + quantity,
-        },
-      ];
+      const productIndex = state.productWithQuantities.findIndex(
+        (item) => item.product.id == product.id,
+      );
+      newArrayPayload = [...state.productWithQuantities];
+      newArrayPayload.splice(productIndex, 1, {
+        ...productWithQuantity,
+        quantity: productWithQuantity.quantity + quantity,
+      });
       newItems += quantity;
     }
     // si no existe agregarlo al array del carrito
@@ -74,8 +75,8 @@ export function CartContext({ children }) {
   const removeProduct = (id) => {
     const products = state.productWithQuantities;
     // buscar el producto
-    let productInCart = products.find((item) => item.id === id);
-    const index = products.findIndex((item) => item.id === id);
+    let productInCart = products.find((item) => item.product.id === id);
+    const index = products.findIndex((item) => item.product.id === id);
 
     if (productInCart) {
       const n = productInCart.quantity;
@@ -87,12 +88,33 @@ export function CartContext({ children }) {
 
       const copy = [...products];
       copy.splice(index, 1, productInCart);
-      // setProducts(copy)
+
+      const newVat =
+        copy.reduce(
+          (acc, item) => acc + item.product.price * item.quantity,
+          0,
+        ) * 0.16;
+
+      const subtotal = state.subtotal - (productInCart?.product?.price ?? 0);
+
+      setState({
+        productWithQuantities: copy,
+        shipping: state.shipping,
+        vat: newVat,
+        totalItemsInCart: state.totalItemsInCart - 1,
+        totalUniqueItems: copy.length,
+        subtotal,
+        total: subtotal + newVat + state.shipping,
+      });
     }
   };
 
+  const clearCart = () => {
+    setState(initialState);
+  };
+
   return (
-    <Cart.Provider value={{ state, addProduct, removeProduct }}>
+    <Cart.Provider value={{ state, addProduct, removeProduct, clearCart }}>
       {children}
     </Cart.Provider>
   );

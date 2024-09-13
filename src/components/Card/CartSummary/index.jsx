@@ -9,11 +9,17 @@ import { useCart } from "../../../contexts/cart.context";
 const CartSummary = (props) => {
   const cartState = useCart();
 
-  const handleDeleteAll = () => {};
+  const handleDeleteAll = () => {
+    cartState.clearCart();
+  };
 
-  const handleIncrease = () => {};
+  const handleIncrease = (product) => {
+    cartState.addProduct({ product, quantity: 1 });
+  };
 
-  const handleDecrease = () => {};
+  const handleDecrease = (product) => {
+    cartState.removeProduct(product.id);
+  };
 
   return (
     <div className={styles.container}>
@@ -31,7 +37,7 @@ const CartSummary = (props) => {
               <Counter
                 onIncrease={() => handleIncrease(item.product)}
                 onDecrease={() => handleDecrease(item.product)}
-                counter={item.amount}
+                counter={item.quantity}
                 className={styles.counter}
               />
             </SummaryItem>

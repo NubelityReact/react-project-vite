@@ -113,9 +113,8 @@
   }
 
   .imgContainerB {
-    position: absolute;
-    width: 77%;
-    aspect-ratio: 4.5;
+    height: 350px;
+    width: 94%;
   }
 
   .containerC {
