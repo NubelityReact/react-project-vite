@@ -6,6 +6,7 @@ import { useState } from "react";
 import ModalOrderConfirmation from "../../../Modal/OrderConfirmation";
 import styles from "./checkout.form.styles.module.css";
 import Typography from "../../../Typography";
+import { regexes } from "../../../../constants/regex.validators";
 
 const paymentOptions = [
   {
@@ -80,7 +81,7 @@ const FormCheckout = forwardRef(function FormCheckout(_, ref) {
             {...register("email", {
               required: "Este campo es requerido",
               pattern: {
-                value: /^((?!\.)[\w\-_.]*[^.])(@\w+)(\.\w{1,5}(\.\w+)?[^.\W])$/,
+                value: regexes.email,
                 message: "Debe ser un correo válido",
               },
             })}
@@ -92,7 +93,7 @@ const FormCheckout = forwardRef(function FormCheckout(_, ref) {
             {...register("phone", {
               required: "Este campo es requerido",
               pattern: {
-                value: /[0-9]{10}/,
+                value: regexes.phone,
                 message: "deben ser 10 dígitos",
               },
               maxLength: {

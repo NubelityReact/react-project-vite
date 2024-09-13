@@ -8,6 +8,7 @@ import { useCart } from "../../../contexts/cart.context";
 import { useRef } from "react";
 import ResponsiveImage from "../../ResponsiveImage";
 import products from "../../../data/products";
+import { formatMoney } from "../../../utils/formatMoney";
 
 const AddProductToCart = (props) => {
   const { addProduct } = useCart();
@@ -41,7 +42,7 @@ const AddProductToCart = (props) => {
             {props.description}
           </Typography>
 
-          <Typography>${props.price}</Typography>
+          <Typography>{formatMoney(props.price)}</Typography>
 
           <div className={styles.buttons}>
             <Counter ref={counterRef} className={styles.counter} />
