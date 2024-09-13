@@ -42,7 +42,7 @@ const Home = () => {
             title="ZX9 Speaker"
             description="Upgrade to premium speakers that are phenomenally built to deliver truly remarkable sound."
             href="/product-details/6"
-            style={{ maxWidth: 327 }}
+            className={styles.singleAdd}
           />
 
           <Ad
@@ -50,15 +50,15 @@ const Home = () => {
             type="B"
             title="ZX7 Speaker"
             href="/product-details/5"
-            style={{ maxWidth: 327 }}
+            className={styles.singleAdd}
           />
 
           <Ad
             img={{ src: "/assets/ads/yx1 earphones.png", alt: "" }}
             type="C"
-            title="ZX9 Speaker"
-            href="/product-details/6"
-            style={{ maxWidth: 327 }}
+            title="YX1 EArphones"
+            href="/product-details/1"
+            className={styles.singleAdd}
           />
         </div>
         <AdBrand

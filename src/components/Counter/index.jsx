@@ -2,9 +2,10 @@
 import { forwardRef, useImperativeHandle, useState } from "react";
 import Typography from "../Typography";
 import styles from "./counter.styles.module.css";
+import clsx from "clsx";
 
 const Counter = forwardRef(function Counter(props, ref) {
-  const { onIncrease, onDecrease } = props;
+  const { onIncrease, onDecrease, className, ...rest } = props;
 
   const [counter, setCounter] = useState(1);
 
@@ -25,7 +26,7 @@ const Counter = forwardRef(function Counter(props, ref) {
   };
 
   return (
-    <div className={styles.container}>
+    <div className={clsx(styles.container, className)} {...rest}>
       <button className={styles.button} onClick={() => handleSubstract()}>
         -
       </button>

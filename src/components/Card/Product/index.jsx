@@ -3,19 +3,21 @@ import Typography from "../../Typography";
 import Button from "../../Button/Base";
 import { Link } from "react-router-dom";
 import styles from "./card.product.styles.module.css";
+import ResponsiveImage from "../../ResponsiveImage";
+import useViewportMatchSize from "../../../hooks/useViewportMatchSize";
 
 const CardProduct = (props) => {
-  const { image, name, isNew = false, description, url } = props;
+  const { isOdd, image, name, isNew = false, description, url } = props;
+  const match = useViewportMatchSize("desktop");
 
   return (
-    <article className={styles.container}>
-      <picture className={styles.imgContainer}>
-        <img
-          className={styles.img}
-          src={image}
-          alt={`image of product ${name}`}
-        />
-      </picture>
+    <article
+      className={styles.container}
+      style={{
+        flexDirection: isOdd ? (match ? "row-reverse" : "row") : "initial",
+      }}
+    >
+      <ResponsiveImage image={image} className={styles.imgContainer} />
       <div className={styles.content}>
         {isNew && (
           <Typography className={styles.isNew} variant={"overline"}>

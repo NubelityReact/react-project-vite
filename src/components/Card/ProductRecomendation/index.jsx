@@ -20,7 +20,7 @@ const ProductRecommendation = (props) => {
       <Typography as="h4">{product.name}</Typography>
 
       <Link to={`/product-details/${productId}`}>
-        <Button variant="primary">
+        <Button>
           <Typography variant="subtitle">see product</Typography>
         </Button>
       </Link>

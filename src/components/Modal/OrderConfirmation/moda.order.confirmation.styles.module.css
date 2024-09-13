@@ -8,3 +8,21 @@
   position: relative;
   top: -100px;
 }
+
+@media screen and (min-width: 768px) {
+  .overlay {
+    padding-inline: 40px;
+  }
+
+  .content {
+    top: 15vh;
+    margin-inline-start: auto;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .content {
+    width: 50vw;
+    margin-inline: auto;
+  }
+}

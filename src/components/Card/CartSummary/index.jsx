@@ -18,7 +18,9 @@ const CartSummary = (props) => {
   return (
     <div className={styles.container}>
       <header className={styles.header}>
-        <Typography>CART {cartState.state.totalItemsInCart}</Typography>
+        <Typography variant="h6">
+          CART ({cartState.state.totalItemsInCart})
+        </Typography>
         <Typography onClick={handleDeleteAll}>Remove all</Typography>
       </header>
 
@@ -30,6 +32,7 @@ const CartSummary = (props) => {
                 onIncrease={() => handleIncrease(item.product)}
                 onDecrease={() => handleDecrease(item.product)}
                 counter={item.amount}
+                className={styles.counter}
               />
             </SummaryItem>
           );
@@ -38,7 +41,7 @@ const CartSummary = (props) => {
 
       <div className={styles.total}>
         <Typography>TOTAL</Typography>
-        <Typography>${cartState.subtotal}</Typography>
+        <Typography>${cartState.state.subtotal}</Typography>
       </div>
 
       <Link
@@ -46,7 +49,7 @@ const CartSummary = (props) => {
         className={styles.link}
         onClick={() => props.btnCb && props.btnCb()}
       >
-        <Button variant="primary">
+        <Button>
           <Typography variant="subtitle">checkout</Typography>
         </Button>
       </Link>

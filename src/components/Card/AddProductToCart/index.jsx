@@ -6,6 +6,8 @@ import ProductRecommendation from "../ProductRecomendation";
 import Counter from "../../Counter";
 import { useCart } from "../../../contexts/cart.context";
 import { useRef } from "react";
+import ResponsiveImage from "../../ResponsiveImage";
+import products from "../../../data/products";
 
 const AddProductToCart = (props) => {
   const { addProduct } = useCart();
@@ -20,59 +22,67 @@ const AddProductToCart = (props) => {
   return (
     <section className={styles.container}>
       <article className={styles.card}>
-        <picture className={styles.imgContainer}>
-          <img
-            src={props.image.desktop}
-            alt={props.name}
-            className={styles.img}
-          />
-        </picture>
+        <div>
+          <ResponsiveImage image={props.image} name={props.name} />
+        </div>
 
-        {props.new && (
-          <Typography variant="overline" className="orange">
-            new product
+        <div className={styles.content}>
+          {props.new && (
+            <Typography variant="overline" className="orange">
+              new product
+            </Typography>
+          )}
+
+          <Typography variant="h4" as="h1">
+            {props.name}
           </Typography>
-        )}
 
-        <Typography variant="h4" as="h1">
-          {props.name}
-        </Typography>
+          <Typography className={styles.opacity}>
+            {props.description}
+          </Typography>
 
-        <Typography className={styles.opacity}>{props.description}</Typography>
+          <Typography>${props.price}</Typography>
 
-        <Typography>${props.price}</Typography>
+          <div className={styles.buttons}>
+            <Counter ref={counterRef} className={styles.counter} />
 
-        <div className={styles.buttons}>
-          <Counter ref={counterRef} />
-
-          <Button variant="contained" onClick={handleAddProduct}>
-            <Typography variant="subtitle">add to cart</Typography>
-          </Button>
+            <Button variant="contained" onClick={handleAddProduct}>
+              <Typography variant="subtitle">add to cart</Typography>
+            </Button>
+          </div>
         </div>
       </article>
 
-      <section className={styles.section}>
-        <Typography variant="h5">Features</Typography>
+      <div className={styles.deviceData}>
+        <section className={styles.section}>
+          <Typography variant="h5">Features</Typography>
 
-        <Typography className={styles.opacity}>{props.features}</Typography>
-      </section>
+          <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+            {props.features.split("\n").map((item) => (
+              <Typography key={item} className={styles.opacity}>
+                {item}
+              </Typography>
+            ))}
+          </div>
+        </section>
 
-      <section className={styles.section}>
-        <Typography variant="h5">in the box</Typography>
+        <section className={styles.section}>
+          <Typography variant="h5">in the box</Typography>
 
-        <ul className={styles.inTheBoxList}>
-          {props.includes.map((item, n) => {
-            return (
-              <li key={item.item + n}>
-                <Typography as="span" className="orange">
-                  {item.quantity}x
-                </Typography>
-                <Typography as="span">{item.item.trim()}</Typography>
-              </li>
-            );
-          })}
-        </ul>
-      </section>
+          <ul className={styles.inTheBoxList}>
+            {props.includes.map((item, n) => {
+              return (
+                <li key={item.item + n}>
+                  <Typography as="span" className="orange">
+                    {item.quantity}x
+                  </Typography>
+                  <Typography as="span">{item.item.trim()}</Typography>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      </div>
 
       <div className={styles.gallery}>
         <picture>
@@ -88,13 +98,15 @@ const AddProductToCart = (props) => {
 
       <section className={styles.section} style={{ gap: 56 }}>
         <Typography variant="h5">You may also like</Typography>
-        {props.others.map((item) => (
-          <ProductRecommendation
-            key={item.slug}
-            product={item}
-            productId={props.id}
-          />
-        ))}
+        <div className={styles.section}>
+          {props.others.map((item) => (
+            <ProductRecommendation
+              key={item.slug}
+              product={item}
+              productId={products.find((p) => p.slug == item.slug).id}
+            />
+          ))}
+        </div>
       </section>
     </section>
   );

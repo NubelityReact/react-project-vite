@@ -5,7 +5,19 @@
   justify-items: center;
 }
 
+.deviceData {
+  display: flex;
+  flex-direction: column;
+  gap: 88px;
+  justify-items: center;
+}
+
 .card {
+  display: grid;
+  gap: 24px;
+}
+
+.content {
   display: grid;
   gap: 24px;
 }
@@ -28,6 +40,11 @@
 .buttons {
   display: flex;
   gap: 16px;
+  height: 48px;
+}
+
+.counter {
+  height: 100%;
 }
 
 .section {
@@ -49,7 +66,20 @@
 
 .gallery {
   display: grid;
+  grid-template-areas: "first" "second" "third";
   gap: 20px;
+}
+
+.gallery picture:nth-child(1) {
+  grid-area: first;
+}
+
+.gallery picture:nth-child(2) {
+  grid-area: second;
+}
+
+.gallery picture:nth-child(3) {
+  grid-area: third;
 }
 
 .gallery picture {
@@ -60,4 +90,45 @@
 
 .gallery img {
   width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .card {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+
+  .content {
+    height: 357px;
+  }
+
+  .section:nth-child(3) {
+    flex-direction: row;
+    width: 100%;
+    gap: 125px;
+  }
+
+  .gallery {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "first third" "second third";
+  }
+
+  .section:nth-child(4) {
+    align-items: center;
+  }
+
+  .section:nth-child(4) div:nth-child(2) {
+    flex-direction: row;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .deviceData {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+  }
+
+  .inTheBoxList {
+    padding: 0;
+  }
 }

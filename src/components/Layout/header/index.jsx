@@ -46,11 +46,7 @@ const Header = () => {
       <div className={styles.supercontainer}>
         <header className={styles.container}>
           <div className={styles.leftColumn}>
-            <Icon
-              name="burger-icon.svg"
-              icon={{ src: "/icons/burger-icon.svg", alt: "menu icon" }}
-              onClick={toggleMenu}
-            />
+            <Icon name="burger-icon.svg" onClick={toggleMenu} />
 
             <Logo
               onClick={handleNavigation}

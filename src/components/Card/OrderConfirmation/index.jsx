@@ -34,7 +34,7 @@ const OrderConfirmation = (props) => {
       <div className={styles.content}>
         <div className={styles.products}>
           <SummaryItem {...firstProduct.product}>
-            <Typography>x{firstProduct.amount}</Typography>
+            <Typography>x{firstProduct.quantity}</Typography>
           </SummaryItem>
           {cartState.state.productWithQuantities.length > 1 && (
             <Typography>

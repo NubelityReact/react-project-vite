@@ -40,12 +40,13 @@ const CategoryPage = () => {
         {name}
       </Typography>
       <div className={styles.content}>
-        {categoryProducts.map((product) => {
+        {categoryProducts.map((product, index) => {
           return (
             <CardProduct
               key={product.id}
+              isOdd={index % 2 === 1}
               name={product.name}
-              image={product.image.mobile}
+              image={product.image}
               description={product.description}
               isNew={product.new}
               url={`/product-details/${product.id}`}

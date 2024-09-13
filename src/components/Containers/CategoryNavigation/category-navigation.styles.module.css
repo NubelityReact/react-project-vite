@@ -20,4 +20,12 @@
 
 /* media queries */
 @media screen and (min-width: 1440px) {
+  .container {
+    gap: 48px;
+    width: 100%;
+  }
+
+  .container > * {
+    flex-grow: 1;
+  }
 }

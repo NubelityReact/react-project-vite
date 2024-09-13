@@ -4,7 +4,11 @@ import CartSummary from "../../Card/CartSummary";
 
 const ModalCart = (props) => {
   return (
-    <Modal {...props} containerStyles={styles.overlay}>
+    <Modal
+      {...props}
+      containerStyles={styles.overlay}
+      contentStyles={styles.contentStyles}
+    >
       <CartSummary btnCb={props.onClose} />
     </Modal>
   );

@@ -1,12 +1,13 @@
 import { forwardRef } from "react";
 import PropTypes from "prop-types";
 import styles from "./input.radio.module.css";
+import clsx from "clsx";
 
 const InputRadio = forwardRef(function InputRadio(props, ref) {
-  const { options, ...rest } = props;
+  const { options, className, ...rest } = props;
 
   return (
-    <div className={styles.container}>
+    <div className={clsx(styles.container, className)}>
       {options.map((item) => {
         return (
           <label key={item.id} className={styles.inputContainer}>

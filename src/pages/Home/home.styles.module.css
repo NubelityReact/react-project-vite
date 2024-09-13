@@ -9,3 +9,20 @@
   display: grid;
   gap: 24px;
 }
+
+.singleAdd {
+  max-width: 327px;
+}
+
+@media screen and (min-width: 768px) {
+  .singleAdd {
+    max-width: none;
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .main {
+    padding: 165px;
+  }
+}

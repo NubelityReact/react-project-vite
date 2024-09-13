@@ -21,6 +21,7 @@
   .logo {
     flex-grow: 1;
     text-align: left;
+    margin-left: 42px;
   }
 }
 

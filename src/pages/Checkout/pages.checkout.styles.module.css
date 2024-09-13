@@ -1,0 +1,40 @@
+.main {
+  padding: 24px;
+  display: grid;
+  gap: 24px;
+  background-color: #fafafa;
+}
+
+.content {
+  display: grid;
+  gap: 24px;
+}
+
+.paper {
+  background-color: white;
+  padding: 32px 24px;
+  border-radius: 8px;
+}
+
+@media screen and (min-width: 1440px) {
+  .main {
+    place-content: center;
+  }
+
+  .content {
+    display: flex;
+    gap: 28px;
+  }
+
+  .paper {
+    height: fit-content;
+  }
+
+  .paper:nth-child(1) {
+    width: 730px;
+  }
+
+  .paper:nth-child(2) {
+    width: 350px;
+  }
+}

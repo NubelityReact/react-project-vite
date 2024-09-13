@@ -2,6 +2,7 @@ import { forwardRef } from "react";
 import PropTypes from "prop-types";
 import styles from "./input.text.module.css";
 import clsx from "clsx";
+import Typography from "../../Typography";
 
 const InputText = forwardRef(function InputText(props, ref) {
   const { label, id, error, ...rest } = props;
@@ -13,9 +14,9 @@ const InputText = forwardRef(function InputText(props, ref) {
       <div
         className={clsx(styles.labelContainer, !isValid && styles.errorText)}
       >
-        <label htmlFor={id} className={styles.label}>
+        <Typography as="label" htmlFor={id} className={styles.label}>
           {label}
-        </label>
+        </Typography>
         {!isValid && <p>{error}</p>}
       </div>
       <input

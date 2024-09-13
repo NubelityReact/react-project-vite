@@ -1,4 +1,32 @@
 .overlay {
   height: 100vh;
   top: 80px;
+  padding: 24px;
+}
+
+.contentStyles {
+  border-radius: 8px;
+  overflow: hidden;
+  padding: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .overlay {
+    padding-inline: 40px;
+  }
+
+  .contentStyles {
+    max-width: 48vw;
+    margin-inline-start: auto;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .overlay {
+    padding-inline: 165px;
+  }
+  .contentStyles {
+    max-width: 377px;
+    margin-inline-start: auto;
+  }
 }
